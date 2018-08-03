@@ -10,13 +10,13 @@
 3:新模块 只需两部快速接入
     A： CheckoutAppS.properties：新增模块
     B： 只需要在该模块 AndroidManifest.xml文件内 在<application/> 标签下引入 如下配置
+    
+    
       <meta-data
             android:resource="@string/HH_CORE_subsystem_flag"
             android:name="***.SubsystemAdminAppoint">
-            
-            //⚠️ ：SubsystemAdminAppoint implements ISubsystemAppoint{} 该类需要实现相关接口
-      </meta-data>
-     
+       </meta-data>
+//⚠️ ：SubsystemAdminAppoint implements ISubsystemAppoint{} 该类需要实现相关接口
 
 注意⚠️ ： 该DEMO 没有考虑 混淆后找不到子系统的问题  如需混淆 请keep相关接口以及实现
 ISubsystemAppoint
