@@ -16,7 +16,9 @@
             android:resource="@string/HH_CORE_subsystem_flag"
             android:name="***.SubsystemAdminAppoint">
        </meta-data>
-//⚠️ ：SubsystemAdminAppoint implements ISubsystemAppoint{} 该类需要实现相关接口
 
-注意⚠️ ： 该DEMO 没有考虑 混淆后找不到子系统的问题  如需混淆 请keep相关接口以及实现
-ISubsystemAppoint
+
+注意⚠️ ： 
+
+  SubsystemAdminAppoint implements ISubsystemAppoint{} 模块接入类需要实现相关接口
+  该DEMO 没有考虑 混淆后找不到子系统的问题  如需混淆 请keep相关接口以及实现
