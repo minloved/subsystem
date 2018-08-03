@@ -7,7 +7,7 @@
 
 2：CheckoutAppS.properties：  文件配置 加载不同的Module 作为独立打包成APK的模块 
 
-3:新模块 只需两部快速接入
+3: 新模块 只需两部快速接入
     A： CheckoutAppS.properties：新增模块
     B： 只需要在该模块 AndroidManifest.xml文件内 在<application/> 标签下引入 如下配置
     
