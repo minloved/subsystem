@@ -1,0 +1,16 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="demo.test.moduletestapp" >
+
+
+    <application>
+
+        <meta-data
+            android:resource="@string/HH_CORE_subsystem_flag"
+            android:name="demo.test.moduleA.subsystem.TestSubsystemAppoint">
+        </meta-data>
+
+        <activity android:name="demo.test.moduleA.TestActivity"/>
+
+    </application>
+
+</manifest>

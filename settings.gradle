@@ -1,0 +1,16 @@
+
+
+def path(rootFileName){
+
+    rootProject.getProjectDir().getAbsolutePath() + File.separator + rootFileName
+}
+
+apply from : path("CheckoutAppS.gradle")
+
+
+println " ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++"
+println " +             " + gradle.allModules() + "              +"
+println " ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++"
+
+
+include gradle.allModules()

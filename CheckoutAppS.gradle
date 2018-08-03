@@ -1,0 +1,85 @@
+
+gradle.ext {
+
+    configPath = path("CheckoutAppS.properties")
+
+    checkoutApps = path("CheckoutAppS.gradle")
+
+    configProperties = configProperties()
+
+    allModules = this.&allModules
+
+    isSupportRunningAsApp = this.&isSupportRunningAsApp
+}
+
+def path(rootFileName){
+    rootProject.getProjectDir().getAbsolutePath() + File.separator + rootFileName
+}
+
+def configProperties(){
+
+    def path = gradle.configPath
+
+    println "PATH " + path
+
+    Properties prop = new Properties()
+    InputStream inputStream = new FileInputStream(path)
+    prop.load(inputStream)
+
+    inputStream.close()
+    prop
+}
+
+def isProENV(){
+    String env = gradle.configProperties.getProperty("ENV")
+    return "PRO".equalsIgnoreCase(env)
+}
+
+def runningApp(){
+    if (isProENV()){
+        return gradle.configProperties.getProperty("PRO_RUNNING")
+    }
+    return gradle.configProperties.getProperty("DEV_RUNNING")
+}
+
+def allApps(){
+    String ARRAY_SEPARATE = gradle.configProperties.getProperty("ARRAY_SEPARATE")
+    String apps
+    if (isProENV()){
+        apps = gradle.configProperties.getProperty("PRO")
+
+    }else{
+        apps = gradle.configProperties.getProperty("DEV_INDEPENDENT")
+    }
+    apps.split(ARRAY_SEPARATE)
+}
+
+
+def allModules(){
+
+    List<String> allModulesList = new ArrayList<>()
+    String ARRAY_SEPARATE = gradle.configProperties.getProperty("ARRAY_SEPARATE")
+    String[] baseModuleLibs = gradle.configProperties.getProperty("BASE").split(ARRAY_SEPARATE)
+
+    for (String baseModule : baseModuleLibs){
+        allModulesList.add(baseModule)
+    }
+
+    String[] outsideApps = allApps()
+
+    for(String outSide: outsideApps){ //depend
+        allModulesList.addAll(outSide)
+    }
+
+    String[] ret = new String[allModulesList.size()]
+    allModulesList.toArray(ret)
+}
+
+
+def isSupportRunningAsApp(pj){
+
+    boolean isAsApp = (pj.name).equals(runningApp())
+
+    println " =================== $pj.name is " + (isAsApp ? " ": " not ")+ " a app ====================="
+    isAsApp
+}

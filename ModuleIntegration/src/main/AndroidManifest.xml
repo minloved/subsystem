@@ -1,0 +1,13 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="frame.integration" >
+
+    <application >
+
+        <meta-data
+            android:resource="@string/HH_CORE_subsystem_flag"
+            android:name="frame.integration.subsystemAdmin.SubsystemAdminAppoint">
+        </meta-data>
+
+    </application>
+
+</manifest>
